@@ -61,7 +61,7 @@ function roll() {
     button.classList.remove("rolling");
 
     const finalIndex = Math.floor(Math.random() * projects.length);
-    resultDiv.textContent = "Gewählt: " + projects[finalIndex];
+    resultDiv.textContent = "Your UFO of the day is: " + projects[finalIndex];
   }, 2000);
 }
 
@@ -82,4 +82,5 @@ document.getElementById("fileInput").addEventListener("change", function(event) 
   };
   reader.readAsText(file);
 });
+
 
