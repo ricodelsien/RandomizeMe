@@ -29,6 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
     renderProjects();
   };
 
+  window.deleteProject = function(index) {
+  projects.splice(index, 1);
+  saveProjects();
+  renderProjects();
+};
+
   // Projektliste anzeigen
   function renderProjects() {
     const list = document.getElementById("projectList");
@@ -102,3 +108,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial rendern
   renderProjects();
 });
+
