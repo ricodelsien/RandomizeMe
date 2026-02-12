@@ -1,12 +1,17 @@
 body {
-  font-family: Arial, sans-serif;
-  max-width: 600px;
+  background-color: #000;
+  color: white;
   margin: 0;
   padding: 20px;
+  text-align: center;
   font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.header img {
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  margin-bottom: 30px;
 }
 
 input {
@@ -35,4 +40,5 @@ button {
   50% { transform: rotate(3deg); }
   100% { transform: rotate(-3deg); }
 }
+
 
