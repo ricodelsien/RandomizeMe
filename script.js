@@ -29,10 +29,16 @@ document.addEventListener("DOMContentLoaded", function () {
     renderProjects();
   };
 
-  window.deleteProject = function(index) {
-  projects.splice(index, 1);
-  saveProjects();
+window.clearAll = function() {
+  const confirmDelete = confirm("Wirklich alle UFOs löschen? Das kann nicht rückgängig gemacht werden.");
+
+  if (!confirmDelete) return;
+
+  projects = [];
+  localStorage.removeItem("projects");
   renderProjects();
+
+  document.getElementById("result").textContent = "";
 };
 
   // Projektliste anzeigen
@@ -108,4 +114,5 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial rendern
   renderProjects();
 });
+
 
