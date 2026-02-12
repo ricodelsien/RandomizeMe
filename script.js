@@ -40,7 +40,7 @@ function renderProjects() {
 
 function roll() {
   if (projects.length === 0) {
-    alert("Keine Projekte vorhanden!");
+    alert("Noch keine Projekte vorhanden!");
     return;
   }
 
@@ -82,3 +82,4 @@ document.getElementById("fileInput").addEventListener("change", function(event) 
   };
   reader.readAsText(file);
 });
+
