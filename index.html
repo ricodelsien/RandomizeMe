@@ -15,15 +15,18 @@
 
   <div class="input-section">
     <form id="projectForm">
-      <input type="text" id="projectInput" placeholder="Enter project name" autocomplete="off">
+      <input 
+        type="text" 
+        id="projectInput" 
+        placeholder="Enter project name" 
+        autocomplete="off">
       <button type="submit">Add project</button>
     </form>
   </div>
 
-  <!-- Custom File Import -->
+  <!-- Minimal Import Button -->
   <div class="import-section">
-    <label for="fileInput" class="custom-file-button">Import file</label>
-    <span id="fileName">No file selected</span>
+    <label for="fileInput" class="custom-file-button">📂 Import</label>
     <input type="file" id="fileInput" accept=".txt,.csv" hidden>
   </div>
 
@@ -40,11 +43,10 @@
   <footer class="app-info">
     <p>
       RandomiseMe – created by Nico Siedler<br>
-      Version 0.1a published under GNU 2.0 <span id="buildDate"></span>
+      Version 0.1a published under GNU 2.0 · <span id="buildDate"></span>
     </p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
