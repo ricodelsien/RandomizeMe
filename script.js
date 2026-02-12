@@ -15,10 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (name === "") return;
 
-    projects.push(name);
+    if (!projects.some(p => p.toLowerCase() === name.toLowerCase())) {
+      projects.push(name);
+      saveProjects();
+      renderProjects();
+    }
+
     input.value = "";
-    saveProjects();
-    renderProjects();
     input.focus();
   }
 
@@ -30,15 +33,15 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // delete entire list
-window.clearAll = function() {
-  const confirmDelete = confirm("Do you really want to clear the list?");
-  if (!confirmDelete) return;
+  window.clearAll = function() {
+    const confirmDelete = confirm("Do you really want to clear the list?");
+    if (!confirmDelete) return;
 
-  projects = [];
-  localStorage.removeItem("projects");
-  renderProjects();
-  document.getElementById("result").textContent = "";
-};
+    projects = [];
+    localStorage.removeItem("projects");
+    renderProjects();
+    document.getElementById("result").textContent = "";
+  };
 
   // show list
   function renderProjects() {
@@ -81,28 +84,41 @@ window.clearAll = function() {
     }, 2000);
   };
 
-  // import data
+  // import data (robust CSV handling)
   document.getElementById("fileInput").addEventListener("change", function(event) {
     const file = event.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = function(e) {
-const content = e.target.result;
 
-// seperate by comma or breaks
-const entries = content.split(/[\r\n,]+/);
+      const content = e.target.result;
 
-entries.forEach(entry => {
-  const trimmed = entry.trim();
-  if (trimmed !== "" && !projects.includes(trimmed)) {
-    projects.push(trimmed);
-  }
-});
+      // Trennt bei:
+      // Zeilenumbrüchen, Komma, Semikolon, Tab
+      const entries = content.split(/[\r\n,;\t]+/);
 
+      let added = 0;
+
+      entries.forEach(entry => {
+        let trimmed = entry.trim();
+
+        // Entfernt Anführungszeichen
+        trimmed = trimmed.replace(/^"(.*)"$/, '$1');
+
+        if (
+          trimmed !== "" &&
+          !projects.some(p => p.toLowerCase() === trimmed.toLowerCase())
+        ) {
+          projects.push(trimmed);
+          added++;
+        }
+      });
 
       saveProjects();
       renderProjects();
+
+      alert(`Import finished: ${added} new entries added.`);
     };
 
     reader.readAsText(file);
@@ -117,9 +133,3 @@ entries.forEach(entry => {
   // render init
   renderProjects();
 });
-
-
-
-
-
-
