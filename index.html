@@ -11,10 +11,12 @@
     <img src="RandomiseMe.png" alt="Randomise Me">
   </div>
 
-  <div class="input-section">
-    <input type="text" id="projectInput" placeholder="Projektname eingeben">
-    <button onclick="addProject()">Add project</button>
-  </div>
+<div class="input-section">
+  <form id="projectForm">
+    <input type="text" id="projectInput" placeholder="Projektname eingeben" autocomplete="off">
+    <button type="submit">Add project</button>
+  </form>
+</div>
 
   <div class="import-section">
     <input type="file" id="fileInput" accept=".txt,.csv">
@@ -30,6 +32,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
