@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>RandomiseMe</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,47 +13,37 @@
     <img src="RandomiseMe.png" alt="Randomise Me">
   </div>
 
-<div class="input-section">
-  <form id="projectForm">
-    <input type="text" id="projectInput" placeholder="Projektname eingeben" autocomplete="off">
-    <button type="submit">Add project</button>
-  </form>
-</div>
+  <div class="input-section">
+    <form id="projectForm">
+      <input type="text" id="projectInput" placeholder="Enter project name" autocomplete="off">
+      <button type="submit">Add project</button>
+    </form>
+  </div>
 
+  <!-- Custom File Import -->
   <div class="import-section">
-    <input type="file" id="fileInput" accept=".txt,.csv">
+    <label for="fileInput" class="custom-file-button">Import file</label>
+    <span id="fileName">No file selected</span>
+    <input type="file" id="fileInput" accept=".txt,.csv" hidden>
   </div>
 
   <h2>My UFO's:</h2>
   <ul id="projectList"></ul>
 
-  <button id="clearBtn" onclick="clearAll()">🗑 Clear all UFOs</button>
-
-  <button id="randomBtn" onclick="roll()">🎲 Let's roll!</button>
+  <div class="button-group">
+    <button id="clearBtn" onclick="clearAll()">🗑 Clear all UFOs</button>
+    <button id="randomBtn" onclick="roll()">🎲 Let's roll!</button>
+  </div>
 
   <div id="result"></div>
 
   <footer class="app-info">
-  <p>
-    RandomiseMe – created by Nico Siedler<br>
-    Version 0.1a published under GNU 2.0 <span id="buildDate"></span>
-  </p>
-</footer>
+    <p>
+      RandomiseMe – created by Nico Siedler<br>
+      Version 0.1a published under GNU 2.0 · <span id="buildDate"></span>
+    </p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
