@@ -88,14 +88,18 @@ window.clearAll = function() {
 
     const reader = new FileReader();
     reader.onload = function(e) {
-      const lines = e.target.result.split(/\r?\n/);
+const content = e.target.result;
 
-      lines.forEach(line => {
-        const trimmed = line.trim();
-        if (trimmed !== "" && !projects.includes(trimmed)) {
-          projects.push(trimmed);
-        }
-      });
+// seperate by comma or breaks
+const entries = content.split(/[\r\n,]+/);
+
+entries.forEach(entry => {
+  const trimmed = entry.trim();
+  if (trimmed !== "" && !projects.includes(trimmed)) {
+    projects.push(trimmed);
+  }
+});
+
 
       saveProjects();
       renderProjects();
@@ -113,6 +117,7 @@ window.clearAll = function() {
   // render init
   renderProjects();
 });
+
 
 
 
