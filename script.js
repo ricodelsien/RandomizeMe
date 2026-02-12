@@ -31,13 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 window.clearAll = function() {
   const confirmDelete = confirm("Wirklich alle UFOs löschen? Das kann nicht rückgängig gemacht werden.");
-
   if (!confirmDelete) return;
 
   projects = [];
   localStorage.removeItem("projects");
   renderProjects();
-
   document.getElementById("result").textContent = "";
 };
 
@@ -114,5 +112,6 @@ window.clearAll = function() {
   // Initial rendern
   renderProjects();
 });
+
 
 
