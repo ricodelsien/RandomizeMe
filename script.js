@@ -99,8 +99,15 @@ setTimeout(() => {
   const randomExclamation =
     exclamations[Math.floor(Math.random() * exclamations.length)];
 
-  resultDiv.textContent =
-    randomExclamation + " " + projects[finalIndex];
+  resultDiv.classList.remove("winner-glow");
+resultDiv.classList.remove("result-highlight");
+void resultDiv.offsetWidth; // reset animation
+
+resultDiv.textContent =
+  randomExclamation + " " + projects[finalIndex];
+
+resultDiv.classList.add("winner-glow");
+resultDiv.classList.add("result-highlight");
 
 }, 2000);
   };
@@ -178,6 +185,7 @@ document.addEventListener("keydown", function(event) {
   // render init
   renderProjects();
 });
+
 
 
 
