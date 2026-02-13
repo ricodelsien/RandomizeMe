@@ -9,6 +9,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
+html, body {
+  touch-action: manipulation;
+}
+
 /* ========== HEADER ========== */
 
 .header img {
@@ -211,6 +215,7 @@ li {
 .app-info p {
   margin: 0;
 }
+
 
 
 
