@@ -13,7 +13,7 @@ body {
 
 .header img {
   width: 90%;
-  max-width: 500px;
+  max-width: 650px;
   height: auto;
   margin-bottom: 30px;
 }
@@ -159,4 +159,5 @@ li {
 .app-info p {
   margin: 0;
 }
+
 
