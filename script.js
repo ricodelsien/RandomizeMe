@@ -1,3 +1,5 @@
+//
+
 document.addEventListener("DOMContentLoaded", function () {
 
   // import projects from txt or csv
@@ -84,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
   };
 
-  // import data (robust CSV handling)
+  // import data (txt, csv handling)
   document.getElementById("fileInput").addEventListener("change", function(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -94,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const content = e.target.result;
 
-      // Trennt bei:
-      // Zeilenumbrüchen, Komma, Semikolon, Tab
+      // separates with:
+      // breaks, comma, semi-colon, tab
       const entries = content.split(/[\r\n,;\t]+/);
 
       let added = 0;
@@ -103,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
       entries.forEach(entry => {
         let trimmed = entry.trim();
 
-        // Entfernt Anführungszeichen
+        // removes quotation marks
         trimmed = trimmed.replace(/^"(.*)"$/, '$1');
 
         if (
@@ -133,4 +135,5 @@ document.addEventListener("DOMContentLoaded", function () {
   // render init
   renderProjects();
 });
+
 
