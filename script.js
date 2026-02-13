@@ -84,16 +84,16 @@ setTimeout(() => {
   const finalIndex = Math.floor(Math.random() * projects.length);
 
   const exclamations = [
-    "Oh look!",
-    "Boom!",
-    "There it is!",
-    "Well well!",
-    "Guess what?",
-    "Plot twist!",
-    "Lucky you!",
-    "Here we go!",
-    "Ta-da!",
-    "Voilà!"
+    "Oh look:",
+    "Bäm:",
+    "Take that:",
+    "Well:",
+    "Guess what:",
+    "Plot twist:",
+    "Lucky you:",
+    "Here we go:",
+    "Ta-da:",
+    "Et voilà:"
   ];
 
   const randomExclamation =
@@ -178,6 +178,7 @@ document.addEventListener("keydown", function(event) {
   // render init
   renderProjects();
 });
+
 
 
 
