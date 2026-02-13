@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     projects = [];
     localStorage.removeItem("projects");
     renderProjects();
-    document.getElementById("result").textContent = "";
+    document.getElementById("result").innerHTML = "";
   };
 
   // show list
@@ -97,13 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const randomExclamation =
         exclamations[Math.floor(Math.random() * exclamations.length)];
 
-      // Reset animation
+      // Reset glow animation only
       resultDiv.classList.remove("winner-glow");
       void resultDiv.offsetWidth;
 
-      // Nur Projektname orange
+      // Only project name orange
       resultDiv.innerHTML =
-        randomExclamation + " <span class='result-highlight'>" +
+        randomExclamation +
+        " <span class='result-highlight'>" +
         projects[finalIndex] +
         "</span>";
 
@@ -112,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
   };
 
-  // import data (txt, csv handling)
+  // import data
   document.getElementById("fileInput").addEventListener("change", function(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -121,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
     reader.onload = function(e) {
 
       const content = e.target.result;
-
       const entries = content.split(/[\r\n,;\t]+/);
 
       let added = 0;
@@ -181,6 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // render init
+  // initial render
   renderProjects();
 });
