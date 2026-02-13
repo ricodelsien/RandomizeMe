@@ -113,6 +113,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
   };
 
+  const reloadBtn = document.getElementById("reloadBtn");
+
+if (reloadBtn) {
+  reloadBtn.addEventListener("click", function() {
+    const url = window.location.pathname + "?v=" + Date.now();
+    window.location.href = url;
+  });
+}
+
+
   // import data
   document.getElementById("fileInput").addEventListener("change", function(event) {
     const file = event.target.files[0];
@@ -184,3 +194,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // initial render
   renderProjects();
 });
+
