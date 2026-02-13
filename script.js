@@ -132,8 +132,33 @@ document.addEventListener("DOMContentLoaded", function () {
     addProject();
   });
 
+  const modal = document.getElementById("helpModal");
+const helpBtn = document.getElementById("helpBtn");
+const closeBtn = document.querySelector(".close-btn");
+
+helpBtn.addEventListener("click", function() {
+  modal.style.display = "block";
+});
+
+closeBtn.addEventListener("click", function() {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", function(event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    modal.style.display = "none";
+  }
+});
+
   // render init
   renderProjects();
 });
+
 
 
