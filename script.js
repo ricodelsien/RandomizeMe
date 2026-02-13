@@ -1,5 +1,3 @@
-//
-
 document.addEventListener("DOMContentLoaded", function () {
 
   // import projects from txt or csv
@@ -77,39 +75,41 @@ document.addEventListener("DOMContentLoaded", function () {
       resultDiv.textContent = projects[randomIndex];
     }, 80);
 
-setTimeout(() => {
-  clearInterval(interval);
-  button.classList.remove("rolling");
+    setTimeout(() => {
+      clearInterval(interval);
+      button.classList.remove("rolling");
 
-  const finalIndex = Math.floor(Math.random() * projects.length);
+      const finalIndex = Math.floor(Math.random() * projects.length);
 
-  const exclamations = [
-    "Oh look:",
-    "Bäm:",
-    "Take that:",
-    "Well:",
-    "Guess what:",
-    "Plot twist:",
-    "Lucky you:",
-    "Here we go:",
-    "Ta-da:",
-    "Et voilà:"
-  ];
+      const exclamations = [
+        "Oh look:",
+        "Bäm:",
+        "Take that:",
+        "Well:",
+        "Guess what:",
+        "Plot twist:",
+        "Lucky you:",
+        "Here we go:",
+        "Ta-da:",
+        "Et voilà:"
+      ];
 
-  const randomExclamation =
-    exclamations[Math.floor(Math.random() * exclamations.length)];
+      const randomExclamation =
+        exclamations[Math.floor(Math.random() * exclamations.length)];
 
-  resultDiv.classList.remove("winner-glow");
-resultDiv.classList.remove("result-highlight");
-void resultDiv.offsetWidth; // reset animation
+      // Reset animation
+      resultDiv.classList.remove("winner-glow");
+      void resultDiv.offsetWidth;
 
-resultDiv.textContent =
-  randomExclamation + " " + projects[finalIndex];
+      // Nur Projektname orange
+      resultDiv.innerHTML =
+        randomExclamation + " <span class='result-highlight'>" +
+        projects[finalIndex] +
+        "</span>";
 
-resultDiv.classList.add("winner-glow");
-resultDiv.classList.add("result-highlight");
+      resultDiv.classList.add("winner-glow");
 
-}, 2000);
+    }, 2000);
   };
 
   // import data (txt, csv handling)
@@ -122,16 +122,12 @@ resultDiv.classList.add("result-highlight");
 
       const content = e.target.result;
 
-      // separates with:
-      // breaks, comma, semi-colon, tab
       const entries = content.split(/[\r\n,;\t]+/);
 
       let added = 0;
 
       entries.forEach(entry => {
         let trimmed = entry.trim();
-
-        // removes quotation marks
         trimmed = trimmed.replace(/^"(.*)"$/, '$1');
 
         if (
@@ -158,37 +154,33 @@ resultDiv.classList.add("result-highlight");
     addProject();
   });
 
+  // help modal
   const modal = document.getElementById("helpModal");
-const helpBtn = document.getElementById("helpBtn");
-const closeBtn = document.querySelector(".close-btn");
+  const helpBtn = document.getElementById("helpBtn");
+  const closeBtn = document.querySelector(".close-btn");
 
-helpBtn.addEventListener("click", function() {
-  modal.style.display = "block";
-});
+  if (helpBtn && modal && closeBtn) {
+    helpBtn.addEventListener("click", function() {
+      modal.style.display = "block";
+    });
 
-closeBtn.addEventListener("click", function() {
-  modal.style.display = "none";
-});
+    closeBtn.addEventListener("click", function() {
+      modal.style.display = "none";
+    });
 
-window.addEventListener("click", function(event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
+    window.addEventListener("click", function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        modal.style.display = "none";
+      }
+    });
   }
-});
-
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    modal.style.display = "none";
-  }
-});
 
   // render init
   renderProjects();
 });
-
-
-
-
-
-
-
