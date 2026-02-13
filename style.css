@@ -126,6 +126,13 @@ li {
   min-height: 40px;
 }
 
+/* tinted result */
+.result-highlight {
+  color: #ff8c00;   /* bright orange */
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 140, 0, 0.6);
+}
+
 /* Gewinner-Glow */
 .winner-glow {
   animation: glow 0.8s ease-in-out 3 alternate;
@@ -215,6 +222,7 @@ li {
 .app-info p {
   margin: 0;
 }
+
 
 
 
